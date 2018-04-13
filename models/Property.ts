@@ -2,10 +2,12 @@ import { Agent } from './'
 
 type PropertyType = 'apartment' | 'condo' | 'townhouse'
 
-interface Property {
-  price: number,
-  propertyType: PropertyType,
-  locale: string,
+class Property {
+  price: number
+  propertyType: PropertyType
+  addressStreet: string
+  addressCity: string
+  addressState: string
   listingAgent: Agent
 }
 

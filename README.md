@@ -5,6 +5,7 @@ AgentDesks is a real estate marketplace between buying agents and listing agents
 
 ## Assumptions
 * Objective of the application is to outperform a naive implementation's run-time of O(*nm*) exhaustive comparison of *n* search queries with *m* properties with in-memory optimizations.
+* Exact implementations of data structures are omitted for time constraints.
 * Other than the database choice, the project considers further data infrastructure optimizations out-of-scope.
 * This algorithm runs once a day and has the allowance of time & resources for pre-processing data.
 * The data, application, and computing resources are hosted on industry-standard cloud solutions, namely AWS.
@@ -16,6 +17,7 @@ AgentDesks is a real estate marketplace between buying agents and listing agents
 
 ## Process
 1. Fetch all `SearchQuery` objects from the db and map to statically-typed TypeScript interfaces.
-2. Fetch all `Property` objects and structure the output into a data structure optimized for in-memory lookup run-time.
-3. For each `SearchQuery`, find one or more matching `Property` objects.
-4. Alert the matched agents via AWS SES.
+* Fetch all `Property` objects and structure the output into a data structure `PropertyStore`, optimized for in-memory lookup run-time.
+* When a `Property` is inserted into `PropertyStore`, it will .
+* For each `SearchQuery`, find one or more matching `Property` objects in the lookup structure.
+* Alert the matched agents via AWS SES.

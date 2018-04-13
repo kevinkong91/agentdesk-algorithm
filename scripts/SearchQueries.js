@@ -1,8 +1,7 @@
-
 import { SearchQuery } from '../models'
 import client from '../utils/db'
 
-// Helper functions that are out-of-scope
+// Mock helper functions that are out-of-scope
 const fetchAndMapObjects = (object) => {
   return [objects]
 }
@@ -22,12 +21,15 @@ const getSearchQueries = async () => {
       bed: row.bed,
       bath: row.bath,
       propertyTypes: fetchAndMapObjects(row.propertyTypes),
-      neighborhoods: [string],
+      neighborhoods: row.neighborhoods,
       author: fetchAndMapObjects(row.author),
     })
     results.push(searchQuery)
   })
-  query.on('end', () => { client.end() })
+  query.on('end', () => {
+    client.end()
+    return results
+  })
   return 
 }
 

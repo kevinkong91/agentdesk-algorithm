@@ -1,9 +1,7 @@
-import { getSearchQueries, getProperties } from './scripts'
+import { getSearchQueries, getProperties, findMatchingProperties } from './scripts'
 
 const findMatches = () => {
-  const searchQueries = await getSearchQueries()
-  const properties = await getProperties()
-  findMatchingProperties()
+  
 }
 
 const AgentDesk = () => {

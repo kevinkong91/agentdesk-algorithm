@@ -1,7 +1,7 @@
 import { SearchQuery } from './'
 
-interface Agent {
-  name: string,
+class Agent {
+  name: string
   email: string
 }
 
