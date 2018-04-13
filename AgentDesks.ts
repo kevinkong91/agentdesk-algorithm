@@ -1,11 +1,16 @@
-import { getSearchQueries, getProperties, findMatchingProperties } from './scripts'
+import { Match, Property } from './models'
+import { createPropertyStore, findMatches, alertAgentsForMatch } from './scripts/'
 
-const findMatches = () => {
-  
+const runApp = async () => {
+  await createPropertyStore()
+  const matches = await findMatches()
+  await matches.forEach(async (match: Match) => {
+    await alertAgentsForMatch(match)
+  })
 }
 
-const AgentDesk = () => {
-  runApp: findMatches
+const AgentDesks = () => {
+  runApp()
 }
 
 

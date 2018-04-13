@@ -16,8 +16,7 @@ AgentDesks is a real estate marketplace between buying agents and listing agents
 * Although the scope of this algorithm and task are narrow, types and patterns should be structured to be forward-compatible, versioning models and erring on compositional (OOLO) rather than inheritance-based patterns.
 
 ## Process
-1. Fetch all `SearchQuery` objects from the db and map to statically-typed TypeScript interfaces.
-* Fetch all `Property` objects and structure the output into a data structure `PropertyStore`, optimized for in-memory lookup run-time.
-* When a `Property` is inserted into `PropertyStore`, it will .
+1. Fetch all `Property` objects and structure the output into a data structure `PropertyStore`, optimized for in-memory lookup run-time.
+* Fetch all `SearchQuery` objects from the db and map to statically-typed TypeScript interfaces.
 * For each `SearchQuery`, find one or more matching `Property` objects in the lookup structure.
 * Alert the matched agents via AWS SES.

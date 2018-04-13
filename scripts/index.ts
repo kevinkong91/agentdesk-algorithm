@@ -1,3 +1,5 @@
 export * from './SearchQueries'
 export * from './Properties'
 export * from './Agent'
+export * from './Match'
+export * from './MailService'

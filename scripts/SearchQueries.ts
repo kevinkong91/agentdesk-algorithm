@@ -1,9 +1,10 @@
-import { SearchQuery } from '../models'
+import { SearchQuery, PropertyType } from '../models'
 import client from '../utils/db'
+import { getAgent } from './'
 
 // Mock helper functions that are out-of-scope
 const fetchAndMapObjects = (object) => {
-  return [objects]
+  return [object]
 }
 
 const getSearchQueries = async () => {
@@ -15,15 +16,15 @@ const getSearchQueries = async () => {
   const sql = 'SELECT * FROM search_queries'
 
   const query = client.query(sql)
-  query.on('row', (row) => {
-    const searchQuery = new SearchQuery({
-      budget: row.budget,
-      bed: row.bed,
-      bath: row.bath,
-      propertyTypes: fetchAndMapObjects(row.propertyTypes),
-      neighborhoods: row.neighborhoods,
-      author: fetchAndMapObjects(row.author),
-    })
+  query.on('row', async (row) => {
+    const agent = await getAgent(row.author)
+    const searchQuery = new SearchQuery()
+    searchQuery.budget = row.budget,
+    searchQuery.bed = row.bed,
+    searchQuery.bath = row.bath,
+    searchQuery.propertyTypes = fetchAndMapObjects(row.propertyTypes),
+    searchQuery.neighborhoods = fetchAndMapObjects(row.neighborhoods),
+    searchQuery.author = agent,
     results.push(searchQuery)
   })
   query.on('end', () => {
