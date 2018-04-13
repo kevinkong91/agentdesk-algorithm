@@ -33,8 +33,8 @@ Once key'd into the CITY object, the store will be structured as a BST.
 
 Why BST?
 * If properties are pre-sorted by price, lookup can run efficiently.
-* BST dynamically allocates memory for each Property write operation, whereas the same operation on a
-    sorted list would consume unnecessary memory to copy the array.
+* BST only needs to dynamically allocates memory for the incremental node on a write operation, whereas the
+    same operation on a sorted array would need to copy the entire array, consuming unnecessary memory.
 * Project assumes that, given the daily execution of algorithm, there will be enough time to
     pre-process data to trade off for speedy execution of lookup at the specified time
     (e.g. notification email must be sent out at 9am every morning to all agents).
